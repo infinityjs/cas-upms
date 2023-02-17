@@ -1,4 +1,4 @@
-FROM adoptopenjdk/openjdk11:alpine-slim AS management-overlay
+FROM eclipse-temurin:11-jdk AS management-overlay
 
 RUN mkdir -p cas-management-overlay
 #COPY ./src cas-management-overlay/src/
@@ -16,7 +16,7 @@ RUN cd cas-management-overlay \
     && ./gradlew clean build --parallel --no-daemon;
 
 
-FROM adoptopenjdk/openjdk11:alpine-jre AS cas-management
+FROM eclipse-temurin:11-jdk AS cas-management
 
 LABEL "Organization"="Apereo"
 LABEL "Description"="Apereo CAS Management"
